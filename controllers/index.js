@@ -1,6 +1,11 @@
 const getLogin = (req, res) => {
-  if (req.session.isAuth) return res.render("home")
+  if (req.session.isAuth) return res.redirect("/")
   res.render("login")
+}
+
+const getRegister = (req, res) => {
+  if (req.session.isAuth) return res.redirect("/")
+  res.render("register")
 }
 
 const postAuth = (req, res) => {
@@ -24,11 +29,18 @@ const getSecret = (_req, res) => {
 
 const getLogout = async (req, res) => {
   await req.session.destroy()
-  res.render("home")
+  res.redirect("/")
 }
 
 const getHome = (_req, res) => {
   res.render("home")
 }
 
-module.exports = { getLogin, postAuth, getSecret, getLogout, getHome }
+module.exports = {
+  getLogin,
+  getRegister,
+  postAuth,
+  getSecret,
+  getLogout,
+  getHome,
+}
