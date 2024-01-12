@@ -1,11 +1,12 @@
 const { Router } = require("express")
-const { checkAuth } = require("../middlewares/checkAuth")
+const { checkAuth } = require("../middlewares/index")
 const {
+  getHome,
   getLogin,
-  postAuth,
+  getRegister,
   getSecret,
   getLogout,
-  getHome,
+  postAuth,
 } = require("../controllers/index")
 
 const router = Router()
@@ -14,10 +15,12 @@ router.get("/", getHome)
 
 router.get("/login", getLogin)
 
-router.post("/auth", postAuth)
+router.get("/register", getRegister)
 
 router.get("/secret", checkAuth, getSecret)
 
 router.get("/logout", getLogout)
+
+router.post("/auth", postAuth)
 
 module.exports = router

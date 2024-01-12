@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "node --watch app.js",
+    "dev": "node --watch server.js",
     "esbuild": "esbuild scripts/login.js --bundle --outfile=public/js/login.js --watch --minify"
   },
   "dependencies": {
