@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const form = document.querySelector("form")
+const form = document.querySelector(".login-form")
 const usernameEl = document.querySelector("#username")
 const passwordEl = document.querySelector("#password")
 

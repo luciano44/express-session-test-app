@@ -1,9 +1,30 @@
+const { User } = require("../database/index")
+
 const getLogin = (req, res) => {
   if (req.session.isAuth) return res.redirect("/")
   res.render("login")
 }
 
 const getRegister = (req, res) => {
+  if (req.session.isAuth) return res.redirect("/")
+  res.render("register")
+}
+
+const postRegister = async (req, res) => {
+  const { username, password } = req.body
+  if (!username || !password) return res.json({ msg: "invalid data" })
+
+  console.log({ username, password })
+
+  try {
+    await User.create({
+      username,
+      password,
+    })
+  } catch (error) {
+    console.log(error)
+  }
+
   if (req.session.isAuth) return res.redirect("/")
   res.render("register")
 }
@@ -43,4 +64,5 @@ module.exports = {
   getSecret,
   getLogout,
   getHome,
+  postRegister,
 }
